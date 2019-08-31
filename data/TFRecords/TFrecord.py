@@ -70,14 +70,17 @@ def input_foo(filenames):
 #     dataset = dataset.prefetch(buffer_size=2)
 	return dataset
 
-
-class CreateTFRecord():
-	"""docstring for CreateTFRecord"""
-	def __init__(self, data_to_write, file_name):
-		super(CreateTFRecord, self).__init__()
-		self.data_to_write = data_to_write
-		self.file_name = file_name
-		convert_to_tfrecord(self.data_to_write, self.file_name)
-
+class CreateTFRecord(object):
+    """docstring for CreateTFRecord"""
+    '''
+    EXP.
+    data_to_write = zip(x_train, y_train)
+    file name = 'train.tfrecord'
+    '''
+    def __init__(self, data_to_write, file_name):
+        super().__init__()
+        self.data_to_write = data_to_write
+        self.file_name = file_name
+        convert_to_tfrecord(self.data_to_write, self.file_name)
 
 # CreateTFRecord("kk.tfrecord", "kk")
