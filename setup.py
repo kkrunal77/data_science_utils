@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     # Needed to silence warnings (and to be a worthwhile package)
@@ -7,7 +7,7 @@ setup(
     author='kkrunal77',
     author_email='k.krunal77@gmail.com',
     # Needed to actually package something
-    packages=['data'],
+    packages = find_packages(),
     # Needed for dependencies
     install_requires=['numpy','tensorflow','tensorflow_datasets'],
     # *strongly* suggested for sharing
