@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     # Needed to silence warnings (and to be a worthwhile package)
-    name='data_science_utils',
+    name='my_moduls',
     url='https://github.com/kkrunal77/data_science_utils',
     author='kkrunal77',
     author_email='k.krunal77@gmail.com',
@@ -11,7 +11,7 @@ setup(
     # Needed for dependencies
     install_requires=['numpy','tensorflow','tensorflow_datasets'],
     # *strongly* suggested for sharing
-    version='0.1',
+    # version='0.1',
     # The license can be anything you like
     #license='MIT',
     description='An example of a python package from pre-existing code',
