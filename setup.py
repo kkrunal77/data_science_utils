@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from data.TFRecords import TFrecord
 
 setup(
     # Needed to silence warnings (and to be a worthwhile package)
