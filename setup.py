@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
-#from data.TFRecords.TFrecord as data_pipline
+from data.TFRecords.TFRecord import *
 
 setup(
     # Needed to silence warnings (and to be a worthwhile package)
-    name='my_moduls',
+    name='data_science_utils',
     url='https://github.com/kkrunal77/data_science_utils',
     author='kkrunal77',
     author_email='k.krunal77@gmail.com',
