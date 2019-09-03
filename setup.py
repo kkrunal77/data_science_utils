@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from data.TFRecords import TFrecord
+from data.TFRecords.TFrecord import data_pipline
 
 setup(
     # Needed to silence warnings (and to be a worthwhile package)
