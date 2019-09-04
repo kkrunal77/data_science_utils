@@ -52,7 +52,7 @@ def parser(record, shape=[32, 32, 3], num_of_class=10):
 	return image, label
 
 
-def input_foo(filenames, buffer_size=1024, seed=1, batch_size=32, GPU_buffer_size = None):
+def input_foo(filenames, buffer_size, seed, batch_size, GPU_buffer_size):
 	dataset = tf.data.TFRecordDataset(filenames=filenames, num_parallel_reads=40)
 
 	dataset = dataset.apply(
@@ -84,4 +84,12 @@ class CreateTFRecord(object):
         self.file_name = file_name
         convert_to_tfrecord(self.data_to_write, self.file_name)
 
+class Get_dataset(object):
+	def __init__(self, file_name , buffer_size=1024, seed=1, batch_size=32, GPU_buffer_size = None):
+		self.file_name = file_name
+		self.buffer_size=buffer_size
+		self.seed=seed
+		self.batch_size=batch_size
+		self.GPU_buffer_size = GPU_buffer_size
+		input_foo(self.file_name, self.buffer_size, self.seed, self.batch_size, self.GPU_buffer_size)
 # CreateTFRecord("kk.tfrecord", "kk")

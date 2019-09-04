@@ -10,7 +10,7 @@ class datareader(object):
         super(datareader, self).__init__()
         tf.enable_eager_execution()
 
-    def getdata(self , data_set_name, batch_size=False, train_split=True):
+    def getdata(self, data_set_name, batch_size=False, train_split=True):
         super(datareader, self).__init__()
         self.data_set_name = data_set_name
         self.batch_size = batch_size
