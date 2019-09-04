@@ -36,7 +36,7 @@ def convert_to_tfrecord(data_set, file_name):
 		print(f"TFRecord id created at path : '{file_name}', Done")
 
 
-def parser(record):
+def parser(record, shape=[32, 32, 3], num_of_class=10):
 	feature_description = {
 	'image': tf.FixedLenFeature([], tf.string, default_value=''),
 	'label': tf.FixedLenFeature([], tf.int64, default_value=0)
@@ -46,25 +46,26 @@ def parser(record):
 	parsed = tf.parse_single_example(record, feature_description)
 	image = tf.decode_raw(parsed["image"], tf.uint8)
 	image = tf.cast(image, tf.float32)
-	image = tf.reshape(image, shape=[32, 32, 3])
+	image = tf.reshape(image, shape=shape)
 	label = tf.cast(parsed["label"], tf.int32)
-	return {'image': image}, label
+	label = tf.one_hot(label, num_of_class, dtype=tf.int32)
+	return image, label
 
 
-def input_foo(filenames):
+def input_foo(filenames, buffer_size=1024, seed=1, batch_size=32, GPU_buffer_size = None):
 	dataset = tf.data.TFRecordDataset(filenames=filenames, num_parallel_reads=40)
 
 	dataset = dataset.apply(
-		tf.contrib.data.shuffle_and_repeat(buffer_size=1024,
-										   seed=1)
+		tf.contrib.data.shuffle_and_repeat(buffer_size=buffer_size,
+										   seed=seed)
 		)
 	dataset = dataset.apply(
 		tf.contrib.data.map_and_batch(
 								  map_func=parser,
-								  batch_size=32,
+								  batch_size=batch_size,
 								  num_parallel_calls=tf.data.experimental.AUTOTUNE)
 		)
-	dataset = dataset.apply(tf.contrib.data.prefetch_to_device('/GPU:0', buffer_size=None))
+	dataset = dataset.apply(tf.contrib.data.prefetch_to_device('/GPU:0', buffer_size=GPU_buffer_size))
 #     dataset = dataset.map(parser, num_parallel_calls=12)
 #     dataset = dataset.batch(batch_size=1000)
 #     dataset = dataset.prefetch(buffer_size=2)
