@@ -7,11 +7,11 @@ import tensorflow_dataset as tfds
 """https://www.tensorflow.org/datasets"""
 class datareader(object):
     def __init__(self):
-        super(get_dataset, self).__init__()
+        super(datareader, self).__init__()
         tf.enable_eager_execution()
 
     def getdata(self , data_set_name, batch_size=False, train_split=True):
-        super(get_dataset, self).__init__()
+        super(datareader, self).__init__()
         self.data_set_name = data_set_name
         self.batch_size = batch_size
         self.train_split = train_split
