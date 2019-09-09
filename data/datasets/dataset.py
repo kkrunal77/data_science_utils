@@ -2,7 +2,7 @@ import tensorflow as tf
 
 # See available datasets
 # print(tfds.list_builders())
-import tensorflow_dataset as tfds
+import tensorflow_datasets as tfds
 
 """https://www.tensorflow.org/datasets"""
 class datareader(object):
