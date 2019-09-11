@@ -1,5 +1,6 @@
 import tensorflow as tf
-import numpy as np
+import numpy as np  
+import pandas as pd
 
 def _bytes_feature(value):
 	"""Returns a bytes_list from a string / byte."""
