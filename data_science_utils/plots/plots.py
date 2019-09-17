@@ -102,6 +102,24 @@ from keras.preprocessing import image
 import numpy as np
 
 
+def plot_loss_acc(history):
+    plt.figure(figsize=(20,7))
+    plt.subplot(1,2,1)
+    plt.plot(history.history['loss'][1:])    
+    plt.plot(history.history['val_loss'][1:])    
+    plt.title('model loss')    
+    plt.ylabel('val_loss')    
+    plt.xlabel('epoch')    
+    plt.legend(['Train','Validation'], loc='upper left')
+    
+    plt.subplot(1,2,2)
+    plt.plot(history.history['acc'][1:])
+    plt.plot(history.history['val_acc'][1:])
+    plt.title('Model Accuracy')
+    plt.ylabel('val_acc')
+    plt.xlabel('epoch')
+    plt.legend(['Train','Validation'], loc='upper left')
+    plt.show()
 
 
 def min_max_scale(X):
