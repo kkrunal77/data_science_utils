@@ -9,7 +9,8 @@ setup(
     # Needed to actually package something
     packages = find_packages(),
     # Needed for dependencies
-    install_requires=['numpy','tensorflow','tensorflow_datasets'],
+    install_requires=['numpy','tensorflow','tensorflow_datasets','pandas','more-itertools',
+          'dill','seaborn','joblib','opencv-python'],
     # *strongly* suggested for sharing
     # version='0.1',
     # The license can be anything you like
