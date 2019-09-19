@@ -1,13 +1,17 @@
-import numpy as np
-import cv2
 import sys
-import requests
 import os
-import matplotlib.pyplot as 
-import matplotlib.gridspec as gridspec
-
-from io import BytesIO
+import cv2
+import random
+import requests
+import numpy as np
 from PIL import Image
+from io import BytesIO
+from keras import backend as K
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+np.random.seed(2017)
+from keras.preprocessing import image
+
 
 
 #Function extracts .png images path from given directory
@@ -87,20 +91,6 @@ def superimposed_images(img_path, model):
 
     return superimposed_img
     
-
-from keras import backend as K
-import matplotlib.pyplot as plt
-import numpy as np
-np.random.seed(2017)
-
-import cv2
-import random
-
-import matplotlib.gridspec as gridspec
-
-from keras.preprocessing import image
-import numpy as np
-
 
 def plot_loss_acc(history):
     plt.figure(figsize=(20,7))
